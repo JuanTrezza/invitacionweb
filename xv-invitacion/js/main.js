@@ -74,21 +74,16 @@ function createSparkle() {
   const sparkle = document.createElement("span");
   sparkle.classList.add("sparkle");
 
-  const size = Math.random() * 8 + 4;
-  sparkle.style.width = `${size}px`;
-  sparkle.style.height = `${size}px`;
-  sparkle.style.left = `${Math.random() * 100}%`;
-  sparkle.style.animationDuration = `${Math.random() * 5 + 5}s`;
-  sparkle.style.opacity = Math.random().toFixed(2);
+  sparkle.style.left = Math.random() * 100 + "%";
+  sparkle.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  sparkle.style.width = sparkle.style.height = (Math.random() * 6 + 4) + "px";
 
   sparklesContainer.appendChild(sparkle);
 
-  setTimeout(() => {
-    sparkle.remove();
-  }, 10000);
+  setTimeout(() => sparkle.remove(), 6000);
 }
 
-setInterval(createSparkle, 260);
+setInterval(createSparkle, 120);
 
 // =========================
 // EFECTO APARECER SUAVE AL SCROLL EN HERO BUTTON
