@@ -576,3 +576,154 @@ a {
     height: 48px;
   }
 }
+
+.intro-envelope {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: url('../img/hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(2px);
+}
+
+.intro-envelope::before,
+.intro-envelope::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 220px;
+  background: rgba(255,255,255,0.22);
+  z-index: 1;
+}
+
+.intro-envelope::before {
+  top: 18%;
+  left: -8%;
+  transform: rotate(9deg);
+}
+
+.intro-envelope::after {
+  top: 18%;
+  right: -8%;
+  transform: rotate(-9deg);
+}
+
+.envelope-wrap {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.seal-button {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: #f3efe6;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.seal-button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 16px 38px rgba(0,0,0,0.26);
+}
+
+.seal-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.1rem;
+  font-style: italic;
+  color: #8e877a;
+  line-height: 1;
+}
+
+.seal-line {
+  width: 42px;
+  height: 1px;
+  background: #b6ad9d;
+  margin: 10px 0 8px;
+}
+
+.seal-text {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.12rem;
+  font-size: 0.95rem;
+  color: #9e9588;
+}
+
+.intro-help {
+  margin-top: 260px;
+  font-size: 0.95rem;
+  color: rgba(80, 80, 80, 0.45);
+}
+
+.main-invitation {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hidden-invitation {
+  opacity: 0;
+  pointer-events: none;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.intro-envelope.fade-out {
+  animation: introFadeOut 1s ease forwards;
+}
+
+.main-invitation.show-invitation {
+  opacity: 1;
+  pointer-events: auto;
+  height: auto;
+  overflow: visible;
+  transform: scale(1);
+}
+
+@keyframes introFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .seal-button {
+    width: 140px;
+    height: 140px;
+  }
+
+  .seal-name {
+    font-size: 1.8rem;
+  }
+
+  .intro-envelope::before,
+  .intro-envelope::after {
+    height: 160px;
+  }
+
+  .intro-help {
+    margin-top: 220px;
+    font-size: 0.85rem;
+  }
+}

@@ -105,3 +105,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+const introEnvelope = document.getElementById("introEnvelope");
+const mainInvitation = document.getElementById("mainInvitation");
+const openInvitationBtn = document.getElementById("openInvitation");
+
+if (openInvitationBtn && introEnvelope && mainInvitation) {
+  openInvitationBtn.addEventListener("click", async () => {
+    introEnvelope.classList.add("fade-out");
+    mainInvitation.classList.remove("hidden-invitation");
+    mainInvitation.classList.add("show-invitation");
+
+    try {
+      if (bgMusic) {
+        await bgMusic.play();
+        isPlaying = true;
+        musicBtn.classList.add("playing");
+        musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+      }
+    } catch (error) {
+      console.log("El navegador bloqueo el autoplay hasta interaccion:", error);
+    }
+
+    setTimeout(() => {
+      introEnvelope.style.display = "none";
+    }, 1000);
+  });
+}
